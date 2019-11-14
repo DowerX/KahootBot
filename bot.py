@@ -21,5 +21,8 @@ class Bot:
         self.driver.close()
 
     def vote(self, id):
-        buttons = self.driver.find_elements_by_xpath('//*[@role="button"]')
-        buttons[id].click()
+        try:
+            buttons = self.driver.find_elements_by_xpath('//*[@role="button"]')
+            buttons[id].click()
+        except:
+            print(f"Tried to vote for No. {id} but there only were {len(buttons)} options. Error")
