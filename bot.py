@@ -1,9 +1,14 @@
 from selenium import webdriver
+from selenium.webdriver.chrome.options import Options
 from time import sleep
 
 class Bot:
     def __init__(self):
-        self.driver = webdriver.Chrome()
+        chrome_options = webdriver.ChromeOptions()
+        prefs = {"profile.managed_default_content_settings.images": 2}
+        chrome_options.add_experimental_option("prefs", prefs)
+        chrome_options.add_argument("--headless")
+        self.driver = webdriver.Chrome(chrome_options=chrome_options)
 
     def login(self, pin, name):
         self.driver.get("https://kahoot.it/")
@@ -18,7 +23,8 @@ class Bot:
         enterButton.click()
 
     def quit(self):
-        self.driver.close()
+        #self.driver.close()
+        self.driver.quit()
 
     def vote(self, id):
         try:

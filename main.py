@@ -1,9 +1,9 @@
 from bot import Bot
 from threading import Thread
 
-count = 100
+count = 20
 prefix = "Bot"
-pin = "660891"
+pin = "628188"
 
 threadCount = count
 
